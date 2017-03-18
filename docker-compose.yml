@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+
+  mongo:
+    image: mongo
+    volumes:
+      - ./data/runtime/db:/data/db
+    command: mongod --smallfiles --oplogSize 128
+
+  scaner:
+    image: .
+    environments:
+      - PORT=3000
+      - MONGO_URL=mongodb://mongo:27017/identities
+    links:
+      - mongo:mongo
+    ports:
+      - 3000:3000
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./scanner.conf:/etc/nginx/conf.d/scanner.conf
+    ports:
+      - 80:80
