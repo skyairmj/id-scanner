@@ -1,6 +1,6 @@
 {
   "name": "Scanner",
-  "description": "A Webapp that scans ID/License images, and extracts ID/License info with OCR",
+  "description": "A Webapp that scans ID/License images, and parse ID/License info with OCR",
   "version": "0.0.1",
   "author": "Ming Jin <skyairmj@gmail,com>",
   "license": "MIT",
