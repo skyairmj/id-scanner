@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "node bin/www",
-    "test": "mocha --require test/support/env --timeout 3000 --reporter spec --bail --check-leaks test/",
+    "test": "mocha --require test/support/env --timeout 10000 --reporter spec --bail --check-leaks test/",
     "test-ci": "mocha --reporter spec --check-leaks test/"
   }
 }
