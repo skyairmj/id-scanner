@@ -34,3 +34,4 @@ photos
 **.py
 test/.DS_Store
 .DS_Store
+test/support/config.js
