@@ -30,8 +30,6 @@ node_modules
 npm-debug.log
 
 data
-photos
-**.py
-test/.DS_Store
+**/.DS_Store
 .DS_Store
-test/support/config.js
+config/local.yml

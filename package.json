@@ -21,7 +21,9 @@
     "serve-favicon": "2.4.1",
     "morgan": "1.8.1",
     "body-parser": "1.17.1",
-    "debug": "2.2.0"
+    "debug": "2.2.0",
+    "js-yaml": "3.8.2",
+    "config": "1.25.1"
   },
   "devDependencies": {
     "mocha": "2.5.3",

@@ -2,6 +2,7 @@ var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
 var https = require('https');
+var config = require('config');
 
 describe('IDScanner', function() {
   describe('#scan()', function() {
@@ -16,8 +17,7 @@ describe('IDScanner', function() {
 
         var content = "{\"inputs\":[{\"image\":{\"dataType\":50,\"dataValue\":\""+image_data+"\"},\"configure\":{\"dataType\":50,\"dataValue\":\"{\\\"side\\\":\\\"face\\\"}\"}}]}"
 
-        const CONFIG = require(path.join(__dirname, '/support/config.js')).config;
-        var appcode = CONFIG.aliyun.api.appcode;
+        var appcode = config.aliyun.api.appcode;
 
         var options = {
           host: 'dm-51.data.aliyun.com',

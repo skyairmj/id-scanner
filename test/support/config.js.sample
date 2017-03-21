@@ -1,7 +1,0 @@
-exports.config = {
-  aliyun: {
-    api: {
-      appcode: 'abcdefghijklmn1234567890'
-    }
-  }
-}
