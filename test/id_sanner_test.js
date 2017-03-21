@@ -45,8 +45,9 @@ describe('IDScanner', function() {
             result.nationality.should.be.exactly('汉');
             result.num.should.be.exactly('421011198210101497');
             result.sex.should.be.exactly('男');
-          }).on('end', () => {
             done();
+          }).on('end', () => {
+
           });
         });
 
@@ -94,8 +95,8 @@ describe('IDScanner', function() {
             result.start_date.should.be.exactly('20060322');
             result.end_date.should.be.exactly('长期');
             result.issue.should.be.exactly('嘉兴市公安局');
-          }).on('end', () => {
             done();
+          }).on('end', () => {
           });
         });
 
@@ -147,8 +148,8 @@ describe('IDScanner', function() {
             result.person.should.be.exactly('许世明');
             result.reg_num.should.be.exactly('440101000233515');
             result.valid_period.should.be.exactly('长期');
-          }).on('end', () => {
             done();
+          }).on('end', () => {
           });
         });
 
