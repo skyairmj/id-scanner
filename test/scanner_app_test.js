@@ -19,14 +19,22 @@ describe('ScannerApp', function() {
 
   describe('POST /', function() {
     it('should handle file upload and respond image data', function (done) {
+      var imageName = 'id_face_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
-        .attach('inputFile', path.join(__dirname, '/fixtures/id_face_example.jpg'))
-        .expect(200)
-        .then(res => {
-          res.body.success.should.be.exactly(true);
-          res.body.originalFilename.should.be.exactly('id_face_example.jpg');
-          done();
-        });
+        .attach('inputFile', path.join(__dirname, '/fixtures/'+imageName))
+        .expect(200, {
+          success: true,
+          originalFilename: imageName,
+          result: {
+            address: '浙江省嘉兴市江滨区滨江街望江花园634号',
+            birth: '19821010',
+            name: '鲁彬',
+            nationality: '汉',
+            num: '421011198210101497',
+            sex: '男',
+            success: true
+          }
+        }, done);
     });
   });
 });
