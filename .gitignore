@@ -32,4 +32,5 @@ npm-debug.log
 data
 **/.DS_Store
 .DS_Store
-config/local.yml
+config/test.yml
+uploads

@@ -4,7 +4,7 @@ var should = require('should');
 var scanner = require(path.join(__dirname, '../app/services/scanner.js'));
 var strategy = require(path.join(__dirname, '../app/services/scan_strategy.js'));
 
-describe('IDScanner', function() {
+describe('Scanner', function() {
   describe('#scan()', function() {
     it('should parse id face side information', function (done) {
       var file_path = path.join(__dirname, '/fixtures/id_face_example.jpg');
