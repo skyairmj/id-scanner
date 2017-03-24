@@ -27,33 +27,85 @@ router.post('/', function(req, res, next) {
     }
 
     var filesTmp = JSON.stringify(files, null, 2);
+    console.log('field type:'+ fields.type);
     console.log('parse files: ' + filesTmp);
 
     var inputFile = files.inputFile[0];
     var uploadedPath = inputFile.path;
     var originalFilename = inputFile.originalFilename;
 
-    scanner.scan(uploadedPath, strategy.idcard_face, result => {
-      if(result.success) {
-        delete result.config_str;
-        delete result.face_rect;
-        delete result.request_id;
-        res.format({
-          'application/json': function () {
-            res.json({ success: true, originalFilename: originalFilename, result: result });
+    switch(fields.type.toString())
+    {
+      case 'id face':
+        scanner.scan(uploadedPath, strategy.idcard_face, result => {
+          if(result.success) {
+            delete result.config_str;
+            delete result.face_rect;
+            delete result.request_id;
+            res.format({
+              'application/json': function () {
+                res.json({ success: true, originalFilename: originalFilename, result: result });
+              }
+            });
+          } else {
+            res.format({
+              'application/json': function () {
+                res.status(500).json({ success: false, originalFilename: originalFilename, result: result });
+              }
+            });
           }
+        },
+        err => {
+          next(err)
         });
-      } else {
-        res.format({
-          'application/json': function () {
-            res.status(500).json({ success: false, originalFilename: originalFilename, result: result });
+        break;
+      case 'id back':
+        scanner.scan(uploadedPath, strategy.idcard_back, result => {
+          if(result.success) {
+            delete result.config_str;
+            delete result.request_id;
+            res.format({
+              'application/json': function () {
+                res.json({ success: true, originalFilename: originalFilename, result: result });
+              }
+            });
+          } else {
+            res.format({
+              'application/json': function () {
+                res.status(500).json({ success: false, originalFilename: originalFilename, result: result });
+              }
+            });
           }
+        },
+        err => {
+          next(err)
         });
-      }
-    },
-    err => {
-      next(err)
-    });
+        break;
+      case 'business license':
+        scanner.scan(uploadedPath, strategy.business_license, result => {
+          if(result.success) {
+            delete result.config_str;
+            delete result.request_id;
+            res.format({
+              'application/json': function () {
+                res.json({ success: true, originalFilename: originalFilename, result: result });
+              }
+            });
+          } else {
+            res.format({
+              'application/json': function () {
+                res.status(500).json({ success: false, originalFilename: originalFilename, result: result });
+              }
+            });
+          }
+        },
+        err => {
+          next(err)
+        });
+        break;
+      default:
+        break;
+    }
   });
 
 });
