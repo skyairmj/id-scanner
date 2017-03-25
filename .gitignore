@@ -34,3 +34,4 @@ data
 .DS_Store
 config/test.yml
 uploads
+config/development.yml
