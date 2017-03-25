@@ -22,13 +22,16 @@ module.exports = function(){
           var str = chunk.toString();
           console.log(str);
           var result = strategy.getResult(str);
+          strategy.reviseResult(result);
           dataHandler(result);
         }).on('end', () => {
+          strategy = null;
         });
       });
 
       req.on('error', err => {
         console.error(err);
+        strategy = null;
         errHandler(err);
       });
 

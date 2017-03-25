@@ -8,7 +8,7 @@ describe('ScannerApp', function() {
     app = require(path.join(__dirname, '../app.js'));
   });
 
-  describe.skip('GET /', function() {
+  describe('GET /', function() {
     it('should respond with title parameter', function (done) {
       request(app).get('/').set('Accept', 'application/json')
         .expect(200, {
