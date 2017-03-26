@@ -35,3 +35,4 @@ data
 config/test.yml
 uploads
 config/development.yml
+public/lib

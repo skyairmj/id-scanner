@@ -1,0 +1,15 @@
+{
+  "name": "scanner",
+  "version": "0.0.1",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "jquery": "3.2.1",
+    "bootstrap": "3.3.7",
+    "jquery-file-upload": "8.8.5",
+    "font-awesome": "4.7.0"
+  },
+  "devDependencies": {}
+}
