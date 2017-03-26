@@ -34,6 +34,8 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 
 ### Practices
 * [Asynchronous with Future/Promise](https://www.howtonode.org/promises)
+* [Build Automation](https://en.wikipedia.org/wiki/Build_automation)
+* [Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis)
 * [TDD](https://www.martinfowler.com/bliki/TestDrivenDevelopment.html)
 * [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
 * [Design Patterns(Strategy, Chain of Responsibility, Factory)](https://en.wikipedia.org/wiki/Design_pattern_(computer_science))
@@ -41,5 +43,6 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 ### Tools
 * [NVM](https://github.com/creationix/nvm)
 * [NPM](https://www.npmjs.com)
+* [GulpJS](http://gulpjs.com/)
 * [JSLint](http://jslint.com/)
 * [Travis CI](https://travis-ci.org/)
