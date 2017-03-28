@@ -31,6 +31,10 @@
   },
   "devDependencies": {
     "gulp": "3.9.1",
+    "gulp-filter": "5.0.0",
+    "gulp-minify": "0.0.15",
+    "gulp-uglify": "2.1.2",
+    "main-bower-files": "2.13.1",
     "mocha": "2.5.3",
     "should": "11.2.1",
     "supertest": "1.2.0"

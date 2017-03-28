@@ -3,24 +3,56 @@
 <head>
 <meta charset="utf-8">
 <title>jQuery File Upload Example</title>
+<link rel="stylesheet" href="/vendor/stylesheets/bootstrap.min.css">
+<link rel="stylesheet" href="/vendor/stylesheets/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/vendor/stylesheets/jquery.fileupload-ui.css">
+<noscript>
+  <!-- <link rel="stylesheet" href="/vendor/stylesheets/jquery.fileupload-ui-noscript.css"> -->
+</noscript>
 </head>
 <body>
-<input id="fileupload" type="file" name="files[]" data-url="/upload/index" multiple>
-<script src="/vendor/jquery/dist/jquery.min.js"></script>
-<script src="/vendor/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="/vendor/jquery-file-upload/js/jquery.iframe-transport.js"></script>
-<script src="/vendor/jquery-file-upload/js/jquery.fileupload.js"></script>
-<script src="/vendor/jquery-file-upload/js/jquery.fileupload.js"></script>
+<span class="btn btn-success fileinput-button">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>Select files...</span>
+    <input id="fileupload" type="file" name="files[]" multiple>
+</span>
+<br>
+<br>
+<div id="progress" class="progress-bar">
+    <div class="progress-bar progress-bar-success"></div>
+</div>
+<div id="files" class="files"></div>
+<br>
+<script src="/vendor/javascripts/jquery.js"></script>
+<script src="/vendor/javascripts/jquery.ui.widget.js"></script>
+<script src="/vendor/javascripts/jquery.iframe-transport.js"></script>
+<script src="/vendor/javascripts/jquery.fileupload.js"></script>
 <script>
 $(function () {
+    'use strict';
     $('#fileupload').fileupload({
+        url: '/upload',
         dataType: 'json',
+        add: function (e, data) {
+            alert(1)
+        },
         done: function (e, data) {
+            alert(2)
             $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
+                $('<p/>').text(file.name).appendTo('#files');
             });
+            data.submit();
+        },
+        progressall: function (e, data) {
+            alert(3)
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
         }
-    });
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });
 </script>
 </body>

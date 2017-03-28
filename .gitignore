@@ -35,5 +35,5 @@ data
 config/test.yml
 uploads
 config/development.yml
-public/lib
 bower_components
+public/vendor

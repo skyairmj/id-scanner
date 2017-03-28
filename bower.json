@@ -10,7 +10,9 @@
     "bootstrap": "3.3.7",
     "jquery-file-upload": "8.8.5",
     "font-awesome": "4.7.0",
-    "blueimp-gallery": "2.25.0"
+    "blueimp-gallery": "2.25.0",
+    "jquery-ui": "1.12.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }
