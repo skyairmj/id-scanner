@@ -20,7 +20,7 @@ module.exports = function(){
       var req = https.request(options, res => {
         res.on('data', chunk => {
           var str = chunk.toString();
-          console.log(str);
+          console.log('Parse Data: ' + str);
           var result = strategy.getResult(str);
           strategy.reviseResult(result);
           dataHandler(result);

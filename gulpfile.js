@@ -34,6 +34,11 @@ gulp.task('vendorJS', function(){
             'dist/jquery.fine-uploader.min.js',
             'dist/jquery.fine-uploader.min.js.map'
           ]
+        },
+        'handsontable': {
+          main: [
+            'dist/*.min.*'
+          ]
         }
       }
     }))
@@ -55,6 +60,11 @@ gulp.task('vendorCSS', function(){
             'dist/loading.gif',
             'dist/edit.gif',
             'dist/retry.gif'
+          ]
+        },
+        'handsontable': {
+          main: [
+            'dist/*.min.*'
           ]
         }
       }

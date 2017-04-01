@@ -23,12 +23,11 @@ router.post('/', function(req, res, next) {
   form.parse(req, function(err, fields, files) {
     if(err){
       console.error('parse error: ' + err);
-      next(err)
+      next(err);
     }
 
     var filesTmp = JSON.stringify(files, null, 2);
-    console.log('field type:'+ fields.type);
-    console.log('parse files: ' + filesTmp);
+    console.log('Upload Files: ' + filesTmp);
 
     var inputFile = files.qqfile[0];
     var uploadedPath = inputFile.path;
