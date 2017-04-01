@@ -19,40 +19,20 @@ gulp.task('bower', function(){
 gulp.task('vendorJS', function(){
   return gulp.src(mainBowerFiles({
       overrides: {
-        jquery: {
+        'jquery': {
           main: [
-            "dist/*.min.*",
-            "dist/jquery.js",
+            "dist/*.min.*"
           ]
         },
-        bootstrap: {
+        'bootstrap': {
           main: [
-            'dist/js/bootstrap.min.js'
+            'dist/js/*.min.*'
           ]
         },
-        'blueimp-tmpl': {
+        'fine-uploader': {
           main: [
-            'js/*.min.*'
-          ]
-        },
-        'jquery-file-upload': {
-          main: [
-            'js/**/*.js'
-          ]
-        },
-        'blueimp-load-image': {
-          main: [
-            'js/*.min.*'
-          ]
-        },
-        'blueimp-canvas-to-blob': {
-          main: [
-            'js/*.min.*'
-          ]
-        },
-        'blueimp-gallery': {
-          main: [
-            'js/*.min.*'
+            'dist/jquery.fine-uploader.min.js',
+            'dist/jquery.fine-uploader.min.js.map'
           ]
         }
       }
@@ -64,24 +44,22 @@ gulp.task('vendorJS', function(){
 gulp.task('vendorCSS', function(){
   return gulp.src(mainBowerFiles({
       overrides: {
-        bootstrap: {
+        'bootstrap': {
           main: [
             'dist/css/*.min.*'
           ]
         },
-        'jquery-file-upload': {
+        'fine-uploader': {
           main: [
-            'css/jquery.*.css'
-          ]
-        },
-        'blueimp-gallery': {
-          main: [
-            'css/*.min.*'
+            'dist/*.min.*',
+            'dist/loading.gif',
+            'dist/edit.gif',
+            'dist/retry.gif'
           ]
         }
       }
     }))
-    .pipe(filter(['**/*.css', '**/*.css.map']))
+    .pipe(filter(['**/*.css', '**/*.css.map', '**/*.gif']))
     .pipe(gulp.dest('public/vendor/stylesheets'))
 });
 
@@ -102,17 +80,17 @@ gulp.task('vendorFont', function(){
 gulp.task('vendorImg', function(){
   return gulp.src(mainBowerFiles({
       overrides: {
-        'jquery-file-upload': {
+        'fine-uploader': {
           main: [
-            'img/*.*'
+            'dist/placeholders/*.png'
           ]
         }
       }
     }))
-    .pipe(filter(['**/*.gif']))
-    .pipe(gulp.dest('public/vendor/img'))
+    .pipe(filter(['**/*.png']))
+    .pipe(gulp.dest('public/vendor/images'))
 });
 
 gulp.task('default', [ 'html', 'js', 'css', 'bower' ]);
 
-gulp.task('vendor', [ 'vendorJS', 'vendorCSS', 'vendorFont', 'vendorImg']);
+gulp.task('vendor', [ 'vendorJS', 'vendorCSS', 'vendorImg']);

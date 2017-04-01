@@ -30,11 +30,11 @@ router.post('/', function(req, res, next) {
     console.log('field type:'+ fields.type);
     console.log('parse files: ' + filesTmp);
 
-    var inputFile = files.inputFile[0];
+    var inputFile = files.qqfile[0];
     var uploadedPath = inputFile.path;
     var originalFilename = inputFile.originalFilename;
 
-    scanner.scan(uploadedPath, strategy.lookup(fields.type.toString()), result => {
+    scanner.scan(uploadedPath, strategy.lookup('id face'), result => {
       if(result.success) {
         res.format({
           'application/json': function () {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
   <head>
     <!-- Force latest IE rendering engine or ChromeFrame if installed -->
     <!--[if IE]>
@@ -7,20 +7,28 @@
     <![endif]-->
     <meta charset="utf-8">
     <title>Scanner</title>
-    <meta name="description" content="A Webapp that scans ID/License images, and parse ID/License info with OCR">
     <meta name="author" content="Ming Jin <skyairmj@gmail.com>">
+    <meta name="description" content="A Webapp that scans ID/License images, and parse ID/License info with OCR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet" type="text/css"/>
+    <link href="/vendor/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/vendor/stylesheets/fine-uploader-gallery.min.css" rel="stylesheet">
+    <link href="/vendor/stylesheets/fine-uploader-new.min.css" rel="stylesheet"/>
+    <link href="/stylesheets/custom.css" rel="stylesheet"/>
+    <link href="/stylesheets/tomorrow.css" rel="stylesheet"/>
+    <!--[if IE 8]>
+            <link rel="stylesheet" type="text/css" href="css/ie8.css" >
+        <![endif]-->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <%- partial('_styles') %>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+        <![endif]-->
+    <script src="/vendor/javascripts/jquery.min.js"></script>
+    <script src="/vendor/javascripts/bootstrap.min.js"></script>
+    <script src="/vendor/javascripts/jquery.fine-uploader.min.js"></script>
   </head>
-
   <body>
     <%- body %>
   </body>
-
-  <%- partial('_scripts') %>
 </html>
