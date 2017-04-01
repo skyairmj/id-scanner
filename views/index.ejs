@@ -106,6 +106,10 @@
         </script>
 
         <div id="fine-uploader-gallery"></div>
+
+        <div class="view-code">
+          <button type="button" class="btn-link"><i class="icon-eye-open"></i>View Code</button>
+        </div>
         <hr/>
       </section>
 
@@ -115,34 +119,16 @@
         preview generation feature. Note that client-side previews are only supported in modern browsers
         (not IE9 and older). For more info, see the <a href="http://docs.fineuploader.com/features/thumbnails.html">thumbnail feature docs</a>.</p>
         <div id="hot"></div>
+
+        <div class="view-code">
+          <a class="btn-link btn" download="somedata.xls" href="#" onclick="return ExcellentExport.excel(this, 'htCore', 'Sheet Name Here');"><i class="icon-eye-open">Export to Excel</a>
+        </div>
+        <hr/>
       </section>
 
     </div>
   </div>
 </div>
-
-<script>
-    $('#fine-uploader-gallery').fineUploader({
-        template: 'qq-template-gallery',
-        request: {
-            endpoint: '/'
-        },
-        thumbnails: {
-            placeholders: {
-                waitingPath: '/vendor/images/waiting-generic.png',
-                notAvailablePath: '/vendor/images/not_available-generic.png'
-            }
-        },
-        validation: {
-            allowedExtensions: ['jpeg', 'jpg', 'png']
-        },
-        callbacks: {
-          onComplete: function(id, name, res) {
-            alert(JSON.stringify(res));
-          }
-        }
-    });
-</script>
 
 <script>
   var dataObject = [
@@ -217,7 +203,6 @@
     rowHeaders: true,
     colHeaders: [
         'ID',
-        'Country',
         'Code',
         'Currency',
         'Level',
@@ -233,4 +218,27 @@
   };
 
   var hot = new Handsontable(hotElement, hotSettings);
+
+  $('#fine-uploader-gallery').fineUploader({
+      template: 'qq-template-gallery',
+      request: {
+          endpoint: '/'
+      },
+      thumbnails: {
+          placeholders: {
+              waitingPath: '/vendor/images/waiting-generic.png',
+              notAvailablePath: '/vendor/images/not_available-generic.png'
+          }
+      },
+      validation: {
+          allowedExtensions: ['jpeg', 'jpg', 'png']
+      },
+      callbacks: {
+        onComplete: function(id, name, res) {
+          alert(JSON.stringify(res));
+          dataObject.push(res);
+          hot.render()
+        }
+      }
+  });
 </script>

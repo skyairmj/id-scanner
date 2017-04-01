@@ -39,6 +39,11 @@ gulp.task('vendorJS', function(){
           main: [
             'dist/*.min.*'
           ]
+        },
+        'excellentexport': {
+          main: [
+            '*.min.*'
+          ]
         }
       }
     }))
