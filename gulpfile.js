@@ -20,17 +20,44 @@ gulp.task('vendorJS', function(){
   return gulp.src(mainBowerFiles({
       overrides: {
         jquery: {
-          main: "dist/jquery.min.js"
+          main: [
+            "dist/*.min.*",
+            "dist/jquery.js",
+          ]
         },
         bootstrap: {
           main: [
-            './dist/js/bootstrap.js',
+            'dist/js/bootstrap.min.js'
+          ]
+        },
+        'blueimp-tmpl': {
+          main: [
+            'js/*.min.*'
+          ]
+        },
+        'jquery-file-upload': {
+          main: [
+            'js/**/*.js'
+          ]
+        },
+        'blueimp-load-image': {
+          main: [
+            'js/*.min.*'
+          ]
+        },
+        'blueimp-canvas-to-blob': {
+          main: [
+            'js/*.min.*'
+          ]
+        },
+        'blueimp-gallery': {
+          main: [
+            'js/*.min.*'
           ]
         }
       }
     }))
-    .pipe(filter('**/*.js'))
-    .pipe(uglify())
+    .pipe(filter(['**/*.js', '**/*.js.map', '**/*.min.map']))
     .pipe(gulp.dest('public/vendor/javascripts'))
 });
 
@@ -45,6 +72,11 @@ gulp.task('vendorCSS', function(){
         'jquery-file-upload': {
           main: [
             'css/jquery.*.css'
+          ]
+        },
+        'blueimp-gallery': {
+          main: [
+            'css/*.min.*'
           ]
         }
       }
@@ -67,6 +99,20 @@ gulp.task('vendorFont', function(){
     .pipe(gulp.dest('public/vendor/fonts'))
 });
 
+gulp.task('vendorImg', function(){
+  return gulp.src(mainBowerFiles({
+      overrides: {
+        'jquery-file-upload': {
+          main: [
+            'img/*.*'
+          ]
+        }
+      }
+    }))
+    .pipe(filter(['**/*.gif']))
+    .pipe(gulp.dest('public/vendor/img'))
+});
+
 gulp.task('default', [ 'html', 'js', 'css', 'bower' ]);
 
-gulp.task('vendor', [ 'vendorJS', 'vendorCSS', 'vendorFont']);
+gulp.task('vendor', [ 'vendorJS', 'vendorCSS', 'vendorFont', 'vendorImg']);
