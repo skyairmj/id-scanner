@@ -1,0 +1,7 @@
+bower_comoponets
+data
+node_modules
+uploads
+public/vendor
+**/*.log
+test
