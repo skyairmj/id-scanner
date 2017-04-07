@@ -9,8 +9,7 @@
     "fine-uploader": "5.13.0",
     "bootstrap": "3.3.7",
     "jquery": "3.2.1",
-    "handsontable": "^0.31.1",
-    "excellentexport": "^2.0.3"
+    "handsontable": "0.31.1"
   },
   "devDependencies": {}
 }
