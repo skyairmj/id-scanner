@@ -119,10 +119,7 @@
 </div>
 
 <script>
-  var dataObject = [
-    {name: '鲁彬', num: '421011198210101497', sex: '男',	birth: '19821010', nationality: '汉', address: '浙江省嘉兴市江滨区滨江街望江花园634号', start_date: '20060322', end_date: '长期', issue: '嘉兴市公安局'},
-    {name: '鲁彬', num: '421011198210101497', sex: '男',	birth: '19821010', nationality: '汉', address: '浙江省嘉兴市江滨区滨江街望江花园634号', start_date: '20060322', end_date: '长期', issue: '嘉兴市公安局'}
-  ];
+  var dataObject = [];
 
   var hotElement = document.querySelector('#hot');
   var hotElementContainer = hotElement.parentNode;
@@ -193,7 +190,7 @@
   };
 
   var hot = new Handsontable(hotElement, hotSettings);
-  // 
+  //
   // var exportPlugin = hot.getPlugin('exportFile');
   //
   // $('#export-file').click(function() {

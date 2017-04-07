@@ -14,6 +14,8 @@ USER ${user}
 WORKDIR $APP_HOME
 RUN npm install && bin/bower install && bin/gulp vendor && mkdir -p uploads
 
+VOLUME ["$APP_HOME/node_modules", "$APP_HOME/bower_components"]
+
 EXPOSE 3000
 
 CMD ["npm", "start"]
