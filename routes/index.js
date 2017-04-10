@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
       res.json({ title: 'Express' });
     },
     'text/html': function(){
-      res.render('index', { title: 'Express' });
+      res.render('index', { title: 'Scanner' });
     }
   });
 });
@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
       } else {
         res.format({
           'application/json': function () {
-            res.status(500).json({ success: false, originalFilename: originalFilename, result: person });
+            res.status(422).json({ success: false, originalFilename: originalFilename, result: person });
           }
         });
       }

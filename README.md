@@ -6,7 +6,7 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 * √[NodeJS 4.8](Node.js - Official Site)
 * √[ExpressJS 4.x](http://www.expressjs.com/4x/api.html)
 * √[Aliyun OCR API](https://help.aliyun.com/document_detail/30402.html)
-* √[ConfigJS](https://github.com/baryshev/configjs)
+* √[ConfigJS](https://github.com/lorenwest/node-config)
 * √[multiparty](https://github.com/pillarjs/multiparty)
 * √[MongoDB NodeJS Driver](https://mongodb.github.io/node-mongodb-native/)
 

@@ -216,8 +216,16 @@
       callbacks: {
         onComplete: function(id, name, res) {
           console.log(JSON.stringify(res));
-          dataObject.push(res.result);
-          hot.render()
+          if(res.success) {
+            dataObject.push(res.result);
+            hot.render();
+          } else {
+            
+          }
+        },
+        onError: function(id, name, errorReason, res){
+          console.log(JSON.stringify(errorReason));
+          console.log(JSON.stringify(res));
         }
       }
   });

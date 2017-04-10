@@ -37,3 +37,4 @@ uploads
 config/development.yml
 bower_components
 public/vendor
+config/production.yml

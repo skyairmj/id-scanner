@@ -15,7 +15,7 @@ describe('ScannerApp', function() {
     it('should respond with title parameter', function (done) {
       request(app).get('/').set('Accept', 'application/json')
         .expect(200, {
-          title: 'Express'
+          title: 'Scanner'
         }, done);
     });
   });
@@ -55,6 +55,27 @@ describe('ScannerApp', function() {
             });
           });
         });
+    });
+
+    it.only('should return EMPTY information for uploaded blank image', function (done) {
+      var imageName = 'blank.jpeg';
+      request(app).post('/').set('Accept', 'application/json')
+        .field('type', 'id face')
+        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
+        .expect(422, {
+          success: false,
+          originalFilename: imageName,
+          result: {
+            address: '',
+            birth: '',
+            error_msg: 'face results are all empty',
+            name: '',
+            nationality: '',
+            num: '',
+            sex: '',
+            success: false
+          }
+        }, done);
     });
 
     it.skip('should scan uploaded id back image information', function (done) {
