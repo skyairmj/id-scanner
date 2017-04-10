@@ -1,6 +1,6 @@
 module.exports = {
   getContent: function (image) {
-    return "{\"inputs\":[{\"image\":{\"dataType\":50,\"dataValue\":\""+image+"\"},\"configure\":{\"dataType\":50,\"dataValue\":\"{\\\"side\\\":\\\"back\\\"}\"}}]}"
+    return "{\"inputs\":[{\"image\":{\"dataType\":50,\"dataValue\":\"" + image + "\"},\"configure\":{\"dataType\":50,\"dataValue\":\"{\\\"side\\\":\\\"back\\\"}\"}}]}";
   },
   getOptions: function(appcode) {
     return {
@@ -12,10 +12,10 @@ module.exports = {
         'Authorization': 'APPCODE ' + appcode,
         'Content-Type': 'application/json; charset=UTF-8'
       }
-    };;
+    };
   },
   getResult: function(str) {
-    var dataValue = JSON.parse(str).outputs[0].outputValue.dataValue
+    var dataValue = JSON.parse(str).outputs[0].outputValue.dataValue;
     return JSON.parse(dataValue);
   },
   reviseResult: function(result) {

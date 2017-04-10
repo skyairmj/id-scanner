@@ -4,7 +4,7 @@ var https = require('https');
 var mongodb = require('mongodb');
 var f = require('util').format;
 
-module.exports = function(){
+module.exports = function() {
 
   var _scan = function (imagePath, strategy, dataHandler, errHandler) {
     fs.readFile(imagePath, (err, image) => {
@@ -13,8 +13,8 @@ module.exports = function(){
         return errHandler(err);
       }
 
-      var image_data = new Buffer(image).toString('base64');
-      var content = strategy.getContent(image_data);
+      var imageData = new Buffer(image).toString('base64');
+      var content = strategy.getContent(imageData);
 
       var appcode = config.aliyun.api.appcode;
       var options = strategy.getOptions(appcode);
@@ -45,7 +45,7 @@ module.exports = function(){
     var url = f('mongodb://%s:%s/%s', mongoConf.host, mongoConf.port, mongoConf.database);
 
     mongodb.MongoClient.connect(url, function(err, db) {
-      console.log("Connected successfully to server");
+      console.log('Connected successfully to server');
 
       db.collection('persons').insertOne(person, function(err, result) {
         db.close();
@@ -63,7 +63,7 @@ module.exports = function(){
     var url = f('mongodb://%s:%s/%s', mongoConf.host, mongoConf.port, mongoConf.database);
 
     mongodb.MongoClient.connect(url, function(err, db) {
-      console.log("Connected successfully to server");
+      console.log('Connected successfully to server');
 
       db.collection('persons').find(conditions).toArray(function(err, docs) {
         if(err) {

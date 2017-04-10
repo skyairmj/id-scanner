@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": ["error", 2],
+    "curly": "error",
+    "brace-style": ["error", "1tbs"],
+    "semi": ["error", "always"],
+    "no-extra-semi": "error",
+    "no-trailing-spaces": "error",
+    "space-before-blocks": "error",
+    "space-infix-ops": "error",
+    "space-unary-ops": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "semi-spacing": ["error", {"before": false, "after": false}],
+    'no-console': 'off'
+  }
+}

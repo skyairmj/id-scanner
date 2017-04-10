@@ -100,23 +100,23 @@ describe('Scanner', function() {
         nationality: '汉',
         num: date,
         sex: '男'
-      }
+      };
 
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         scanner.persist(result, (err, result) => {
           should.not.exist(err);
           resolve(err, result);
         });
-      }).then((err, reject) => {
+      }).then((err) => {
         should.not.exist(err);
         scanner.load({num: date}, (err, docs) => {
           should.not.exist(err);
-          
+
           docs.length.should.be.exactly(1);
           docs[0].num.should.be.exactly(date);
-          done()
+          done();
         });
-      })
+      });
     });
   });
 });

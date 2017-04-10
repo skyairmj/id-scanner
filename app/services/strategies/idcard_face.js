@@ -1,6 +1,6 @@
 module.exports = {
   getContent: function (image) {
-    return "{\"inputs\":[{\"image\":{\"dataType\":50,\"dataValue\":\""+image+"\"},\"configure\":{\"dataType\":50,\"dataValue\":\"{\\\"side\\\":\\\"face\\\"}\"}}]}";
+    return "{\"inputs\":[{\"image\":{\"dataType\":50,\"dataValue\":\"" + image + "\"},\"configure\":{\"dataType\":50,\"dataValue\":\"{\\\"side\\\":\\\"face\\\"}\"}}]}";
   },
   getOptions: function(appcode) {
     return {
@@ -15,10 +15,10 @@ module.exports = {
     };
   },
   getResult: function(str) {
-    var dataValue = JSON.parse(str).outputs[0].outputValue.dataValue
+    var dataValue = JSON.parse(str).outputs[0].outputValue.dataValue;
     return JSON.parse(dataValue);
   },
-  reviseResult: function(result){
+  reviseResult: function(result) {
     delete result.config_str;
     delete result.face_rect;
     delete result.request_id;

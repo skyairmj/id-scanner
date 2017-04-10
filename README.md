@@ -36,12 +36,12 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 * √[TDD](https://www.martinfowler.com/bliki/TestDrivenDevelopment.html)
 * √[Design Patterns(Strategy, Chain of Responsibility, Factory)](https://en.wikipedia.org/wiki/Design_pattern_(computer_science))
 * √[Build Automation](https://en.wikipedia.org/wiki/Build_automation)
-* [Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis)
+* √[Static Code Analysis](https://en.wikipedia.org/wiki/Static_program_analysis)
 * [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
 
 ### Tools
 * √[NVM](https://github.com/creationix/nvm)
 * √[NPM](https://www.npmjs.com)
 * √[GulpJS](http://gulpjs.com/)
-* [JSLint](http://jslint.com/)
+* √[ESLint](http://eslint.org/)
 * [Travis CI](https://travis-ci.org/)

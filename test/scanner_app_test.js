@@ -7,7 +7,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 describe('ScannerApp', function() {
   var app;
-  before(function(){
+  before(function() {
     app = require(path.join(__dirname, '../app.js'));
   });
 
@@ -25,7 +25,7 @@ describe('ScannerApp', function() {
       var imageName = 'id_face_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'id face')
-        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/' + imageName))
         .expect(200, {
           success: true,
           originalFilename: imageName,
@@ -46,7 +46,7 @@ describe('ScannerApp', function() {
             console.log("Connected successfully to server");
 
             db.collection('persons').find({num: '421011198210101497'}).toArray(function(err, docs) {
-              should.not.exist(err)
+              should.not.exist(err);
 
               docs.length.should.be.above(0);
 
@@ -61,7 +61,7 @@ describe('ScannerApp', function() {
       var imageName = 'blank.jpeg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'id face')
-        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/' + imageName))
         .expect(422, {
           success: false,
           originalFilename: imageName,
@@ -82,7 +82,7 @@ describe('ScannerApp', function() {
       var imageName = 'id_back_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'id back')
-        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/' + imageName))
         .expect(200, {
           success: true,
           originalFilename: imageName,
@@ -99,7 +99,7 @@ describe('ScannerApp', function() {
       var imageName = 'license_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'business license')
-        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/' + imageName))
         .expect(200, {
           success: true,
           originalFilename: imageName,

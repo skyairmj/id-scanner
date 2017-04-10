@@ -3,6 +3,7 @@ var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var minify = require('gulp-minify');
 var uglify = require('gulp-uglify');
+var eslint = require('gulp-eslint');
 
 gulp.task('html', function(){
 });
@@ -14,6 +15,13 @@ gulp.task('css', function(){
 });
 
 gulp.task('bower', function(){
+});
+
+gulp.task('lint', () => {
+    return gulp.src(['app/**/*.js', 'routes/**/*.js', 'test/**/*.js', '!node_modules/**'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('vendorJS', function(){
