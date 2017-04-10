@@ -1,6 +1,9 @@
 var path = require('path');
 var request = require('supertest');
 var should = require('should');
+var config = require('config');
+var f = require('util').format;
+var MongoClient = require('mongodb').MongoClient;
 
 describe('ScannerApp', function() {
   var app;
@@ -22,7 +25,7 @@ describe('ScannerApp', function() {
       var imageName = 'id_face_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'id face')
-        .attach('inputFile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
         .expect(200, {
           success: true,
           originalFilename: imageName,
@@ -35,14 +38,33 @@ describe('ScannerApp', function() {
             sex: '男',
             success: true
           }
-        }, done);
+        }, () => {
+          var mongoConf = config.mongodb;
+          var url = f('mongodb://%s:%s/%s', mongoConf.host, mongoConf.port, mongoConf.database);
+
+          MongoClient.connect(url, function(err, db) {
+            console.log("Connected successfully to server");
+
+            db.collection('persons').find({num: '421011198210101497'}).toArray(function(err, docs) {
+              if(err) {
+                done(err);
+              }
+
+              docs.length.should.be.above(0);
+
+              db.close();
+
+              done();
+            });
+          });
+        });
     });
 
-    it('should scan uploaded id back image information', function (done) {
+    it.skip('should scan uploaded id back image information', function (done) {
       var imageName = 'id_back_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'id back')
-        .attach('inputFile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
         .expect(200, {
           success: true,
           originalFilename: imageName,
@@ -55,11 +77,11 @@ describe('ScannerApp', function() {
         }, done);
     });
 
-    it('should scan uploaded business license image information', function (done) {
+    it.skip('should scan uploaded business license image information', function (done) {
       var imageName = 'license_example.jpg';
       request(app).post('/').set('Accept', 'application/json')
         .field('type', 'business license')
-        .attach('inputFile', path.join(__dirname, '/fixtures/'+imageName))
+        .attach('qqfile', path.join(__dirname, '/fixtures/'+imageName))
         .expect(200, {
           success: true,
           originalFilename: imageName,

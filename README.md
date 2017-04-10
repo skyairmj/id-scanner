@@ -8,7 +8,7 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 * √[Aliyun OCR API](https://help.aliyun.com/document_detail/30402.html)
 * √[ConfigJS](https://github.com/baryshev/configjs)
 * √[multiparty](https://github.com/pillarjs/multiparty)
-* [MongoDB NodeJS Driver](https://mongodb.github.io/node-mongodb-native/)
+* √[MongoDB NodeJS Driver](https://mongodb.github.io/node-mongodb-native/)
 
 ### Frontend Development
 * √[Bower](https://bower.io/)
@@ -29,7 +29,7 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 * √[Docker](https://www.docker.com/)
 * √[Docker Compose](https://docs.docker.com/compose/overview/)
 * √[Nginx](http://nginx.org/)
-* [MongoDB](https://www.mongodb.com/)
+* √[MongoDB](https://www.mongodb.com/)
 
 ### Practices
 * √[Asynchronous with Future/Promise](https://www.howtonode.org/promises)

@@ -2,6 +2,9 @@ var path = require('path');
 var should = require('should');
 var scanner = require(path.join(__dirname, '../app/services/scanner.js'));
 var strategy = require(path.join(__dirname, '../app/services/scan_strategy.js'));
+var config = require('config');
+var f = require('util').format;
+var MongoClient = require('mongodb').MongoClient;
 
 describe('Scanner', function() {
   describe('#scan()', function() {
@@ -56,6 +59,71 @@ describe('Scanner', function() {
       err => {
         done(err);
       });
+    });
+  });
+
+  describe('#persist()', function() {
+    it('shoud open a mongodb connection and make a query', function(done) {
+      var mongoConf = config.mongodb;
+      var url = f('mongodb://%s:%s/%s', mongoConf.host, mongoConf.port, mongoConf.database);
+
+      MongoClient.connect(url, function(err, db) {
+        console.log("Connected successfully to server");
+        db.dropDatabase();
+
+        var collection = db.collection('inserts');
+
+        collection.insertOne({a:1, b:2}, function(err, r) {
+          if(err) {
+            done(err);
+          }
+
+          r.insertedCount.should.be.exactly(1);
+
+          collection.find({a:1, b:2}).toArray(function(err, docs) {
+            if(err) {
+              done(err);
+            }
+
+            docs.length.should.be.exactly(1);
+
+            db.close();
+
+            done();
+          });
+        });
+      });
+    });
+
+    it('should persist scan result to mongodb', done => {
+      var date = new Date().getTime();
+      var result = {
+        sucess: true,
+        address: '浙江省嘉兴市江滨区滨江街望江花园634号',
+        birth: '19821010',
+        name: '鲁彬',
+        nationality: '汉',
+        num: date,
+        sex: '男'
+      }
+
+      return new Promise((resolve, reject) => {
+        scanner.persist(result, (err, result) => {
+          resolve(err, result);
+        });
+      }).then((err, reject) => {
+        if(err) {
+          done(err);
+        }
+        scanner.load({num: date}, (err, docs) => {
+          if(err) {
+            done(err);
+          }
+          docs.length.should.be.exactly(1);
+          docs[0].num.should.be.exactly(date);
+          done()
+        });
+      })
     });
   });
 });

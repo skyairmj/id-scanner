@@ -1,6 +1,8 @@
 var fs = require('fs');
 var config = require('config');
 var https = require('https');
+var mongodb = require('mongodb');
+var f = require('util').format;
 
 module.exports = function(){
 
@@ -8,7 +10,7 @@ module.exports = function(){
     fs.readFile(imagePath, (err, image) => {
       if (err) {
         console.error(err);
-        errHandler(err);
+        return errHandler(err);
       }
 
       var image_data = new Buffer(image).toString('base64');
@@ -23,16 +25,14 @@ module.exports = function(){
           console.log('Parse Data: ' + str);
           var result = strategy.getResult(str);
           strategy.reviseResult(result);
-          dataHandler(result);
+          return dataHandler(result);
         }).on('end', () => {
-          strategy = null;
         });
       });
 
       req.on('error', err => {
         console.error(err);
-        strategy = null;
-        errHandler(err);
+        return errHandler(err);
       });
 
       req.write(content);
@@ -40,7 +40,45 @@ module.exports = function(){
     });
   };
 
+  var _persist = function(person, onComplete) {
+    var mongoConf = config.mongodb;
+    var url = f('mongodb://%s:%s/%s', mongoConf.host, mongoConf.port, mongoConf.database);
+
+    mongodb.MongoClient.connect(url, function(err, db) {
+      console.log("Connected successfully to server");
+
+      db.collection('persons').insertOne(person, function(err, result) {
+        db.close();
+        if (err) {
+          console.error(err);
+        }
+
+        onComplete(err, result);
+      });
+    });
+  };
+
+  var _load = function(conditions, onComplete) {
+    var mongoConf = config.mongodb;
+    var url = f('mongodb://%s:%s/%s', mongoConf.host, mongoConf.port, mongoConf.database);
+
+    mongodb.MongoClient.connect(url, function(err, db) {
+      console.log("Connected successfully to server");
+
+      db.collection('persons').find(conditions).toArray(function(err, docs) {
+        if(err) {
+          done(err);
+        }
+
+        db.close();
+        onComplete(err, docs);
+      });
+    });
+  };
+
   return {
-    scan: _scan
+    scan: _scan,
+    persist: _persist,
+    load: _load
   };
 }();

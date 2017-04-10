@@ -33,20 +33,21 @@ router.post('/', function(req, res, next) {
     var uploadedPath = inputFile.path;
     var originalFilename = inputFile.originalFilename;
 
-    scanner.scan(uploadedPath, strategy.lookup('id face'), result => {
-      if(result.success) {
+    scanner.scan(uploadedPath, strategy.lookup('id face'), person => {
+      if(!person.success) {
         res.format({
           'application/json': function () {
-            res.json({ success: true, originalFilename: originalFilename, result: result });
-          }
-        });
-      } else {
-        res.format({
-          'application/json': function () {
-            res.status(500).json({ success: false, originalFilename: originalFilename, result: result });
+            res.status(500).json({ success: false, originalFilename: originalFilename, result: person });
           }
         });
       }
+      scanner.persist(person, (err, result) => {
+        res.format({
+          'application/json': function () {
+            res.json({ success: true, originalFilename: originalFilename, result: person });
+          }
+        });
+      });
     },
     err => {
       next(err)

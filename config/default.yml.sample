@@ -1,3 +1,10 @@
 aliyun:
   api:
     appcode: 'abcdefghijklmn1234567890'
+mongodb:
+  host: 'localhost'
+  port: '27017'
+  database: 'db'
+  user: 'user'
+  password: 'password'
+  authMechanism: 'DEFAULT'

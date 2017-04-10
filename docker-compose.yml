@@ -2,18 +2,16 @@ version: '3.1'
 
 services:
 
-  # mongo:
-  #   image: mongo
-  #   volumes:
-  #     - ./data/runtime/db:/data/db
-  #   command: mongod --smallfiles --oplogSize 128
+  mongo:
+    image: mongo
+    volumes:
+      - /data/runtime/db:/data/db
+    command: mongod --smallfiles --oplogSize 128
 
   scanner1:
     image: id-scanner:latest
-    # environment:
-    #   - MONGO_URL=mongodb://mongo:27017/identities
-    # links:
-    #   - mongo:mongo
+    links:
+      - mongo:mongo
     volumes:
       - ./node_modules:/var/app_home/node_modules
       - ./bower_components:/var/app_home/bower_components
@@ -22,10 +20,8 @@ services:
 
   scanner2:
     image: id-scanner:latest
-    # environment:
-    #   - MONGO_URL=mongodb://mongo:27017/identities
-    # links:
-    #   - mongo:mongo
+    links:
+      - mongo:mongo
     volumes:
       - ./node_modules:/var/app_home/node_modules
       - ./bower_components:/var/app_home/bower_components
