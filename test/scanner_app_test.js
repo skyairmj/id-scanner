@@ -46,14 +46,11 @@ describe('ScannerApp', function() {
             console.log("Connected successfully to server");
 
             db.collection('persons').find({num: '421011198210101497'}).toArray(function(err, docs) {
-              if(err) {
-                done(err);
-              }
+              should.not.exist(err)
 
               docs.length.should.be.above(0);
 
               db.close();
-
               done();
             });
           });

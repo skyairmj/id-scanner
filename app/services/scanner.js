@@ -67,7 +67,7 @@ module.exports = function(){
 
       db.collection('persons').find(conditions).toArray(function(err, docs) {
         if(err) {
-          done(err);
+          console.error(err);
         }
 
         db.close();

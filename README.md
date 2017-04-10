@@ -32,7 +32,7 @@ This application is to demonstrate the modern technologies, tools & Practices fo
 * √[MongoDB](https://www.mongodb.com/)
 
 ### Practices
-* √[Asynchronous with Future/Promise](https://www.howtonode.org/promises)
+* √[Asynchronous with Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 * √[TDD](https://www.martinfowler.com/bliki/TestDrivenDevelopment.html)
 * √[Design Patterns(Strategy, Chain of Responsibility, Factory)](https://en.wikipedia.org/wiki/Design_pattern_(computer_science))
 * √[Build Automation](https://en.wikipedia.org/wiki/Build_automation)
