@@ -5,7 +5,7 @@ services:
   mongo:
     image: mongo
     volumes:
-      - /data/runtime/db:/data/db
+      - /data/id-scanner/mongo/db:/data/db
     command: mongod --smallfiles --oplogSize 128
 
   scanner1:
@@ -13,8 +13,9 @@ services:
     links:
       - mongo:mongo
     volumes:
-      - ./node_modules:/var/app_home/node_modules
-      - ./bower_components:/var/app_home/bower_components
+      - /data/id-scanner/uploads:/var/app_home/uploads
+      # - ./node_modules:/var/app_home/node_modules
+      # - ./bower_components:/var/app_home/bower_components
     expose:
       - "3000"
 
@@ -23,8 +24,9 @@ services:
     links:
       - mongo:mongo
     volumes:
-      - ./node_modules:/var/app_home/node_modules
-      - ./bower_components:/var/app_home/bower_components
+      - /data/id-scanner/uploads:/var/app_home/uploads
+      # - ./node_modules:/var/app_home/node_modules
+      # - ./bower_components:/var/app_home/bower_components
     expose:
       - "3000"
 
@@ -36,4 +38,4 @@ services:
       - scanner1
       - scanner2
     ports:
-      - "80:80"
+      - "10080:80"

@@ -5,3 +5,7 @@ uploads
 public/vendor
 **/*.log
 test
+docker-compose.yml
+Dockerfile
+.gitignore
+.git
