@@ -1,8 +1,8 @@
-bower_comoponets
+# bower_comoponets
 data
 node_modules
 uploads
-public/vendor
+# public/vendor
 **/*.log
 test
 docker-compose.yml
