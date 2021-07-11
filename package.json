@@ -16,7 +16,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "1.18.2",
-    "config": "1.25.1",
+    "config": "1.31.0",
     "cookie-parser": "1.4.3",
     "debug": "2.6.9",
     "ejs": "3.1.6",
